@@ -36,7 +36,7 @@ func TestRoverTurnLeft(t *testing.T) {
 	}
 
 	for _, s := range suite {
-		r := &Rover{s.InitialDirection}
+		r := &Rover{s.InitialDirection, 0, 0}
 
 		for s.Turn > 0 {
 			s.Turn -= 1
@@ -62,7 +62,7 @@ func TestRoverTurnRight(t *testing.T) {
 	}
 
 	for _, s := range suite {
-		r := &Rover{s.InitialDirection}
+		r := &Rover{s.InitialDirection, 0, 0}
 
 		for s.Turn > 0 {
 			s.Turn -= 1
@@ -71,6 +71,39 @@ func TestRoverTurnRight(t *testing.T) {
 
 		if got := r.dir; got != s.Expected {
 			t.Errorf("unexpected result, got: %v, expected: %v", Directions[got], Directions[s.Expected])
+			return
+		}
+	}
+}
+
+func TestRoverMoveOn(t *testing.T) {
+	suite := []struct {
+		InitialDirection int
+		Turn             int
+		ExpectedX        int
+		ExpectedY        int
+	}{
+		{North, 3, 0, 3},
+		{West, 2, -2, 0},
+		{South, 1, 0, -1},
+		{East, 8, 8, 0},
+	}
+
+	for _, s := range suite {
+		r := &Rover{s.InitialDirection, 0, 0}
+
+		for s.Turn > 0 {
+			s.Turn -= 1
+			r.MoveOn()
+		}
+
+		if got := r.x; got != s.ExpectedX {
+			t.Errorf("unexpected result for coord X, got: %v, expected: %v", got, s.ExpectedX)
+			return
+		}
+
+		if got := r.y; got != s.ExpectedY {
+			t.Errorf("unexpected result for coord Y, got: %v, expected: %v", got, s.ExpectedY)
 			return
 		}
 	}
