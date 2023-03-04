@@ -49,3 +49,29 @@ func TestRoverTurnLeft(t *testing.T) {
 		}
 	}
 }
+
+func TestRoverTurnRight(t *testing.T) {
+	suite := []struct {
+		InitialDirection int
+		Turn             int
+		Expected         int
+	}{
+		{North, 4, North},
+		{North, 5, East},
+		{South, 5, West},
+	}
+
+	for _, s := range suite {
+		r := &Rover{s.InitialDirection}
+
+		for s.Turn > 0 {
+			s.Turn -= 1
+			r.TurnRight()
+		}
+
+		if got := r.dir; got != s.Expected {
+			t.Errorf("unexpected result, got: %v, expected: %v", Directions[got], Directions[s.Expected])
+			return
+		}
+	}
+}
