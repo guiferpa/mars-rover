@@ -21,5 +21,31 @@ func TestInvalidInstructionToWalk(t *testing.T) {
 			return
 		}
 	}
+}
 
+func TestRoverTurnLeft(t *testing.T) {
+	suite := []struct {
+		InitialDirection int
+		Turn             int
+		Expected         int
+	}{
+		{North, 4, North},
+		{North, 5, West},
+		{North, 1, West},
+		{North, 2, South},
+	}
+
+	for _, s := range suite {
+		r := &Rover{s.InitialDirection}
+
+		for s.Turn > 0 {
+			s.Turn -= 1
+			r.TurnLeft()
+		}
+
+		if got := r.dir; got != s.Expected {
+			t.Errorf("unexpected result, got: %v, expected: %v", Directions[got], Directions[s.Expected])
+			return
+		}
+	}
 }
