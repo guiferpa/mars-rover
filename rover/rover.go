@@ -15,6 +15,15 @@ func (r *Rover) TurnLeft() {
 	r.dir += 1
 }
 
+func (r *Rover) TurnRight() {
+	if r.dir == North {
+		r.dir = East
+		return
+	}
+
+	r.dir -= 1
+}
+
 func (r *Rover) Walk(inst string) error {
 	for _, l := range strings.Split(inst, "") {
 		if _, ok := Letters[l]; !ok {
