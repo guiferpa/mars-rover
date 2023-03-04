@@ -5,24 +5,6 @@ import (
 	"testing"
 )
 
-func TestInvalidInstructionToWalk(t *testing.T) {
-	r := &Rover{}
-
-	suite := []struct {
-		Param string
-	}{
-		{"LMLMLMLM5"},
-		{"LMLYLMLMM"},
-	}
-
-	for _, s := range suite {
-		if got := r.Walk(s.Param); !errors.Is(got, ErrInvalidInstruction) {
-			t.Errorf("unexpected got value different of RoverError struct: got: %v", got)
-			return
-		}
-	}
-}
-
 func TestRoverTurnLeft(t *testing.T) {
 	suite := []struct {
 		InitialDirection int
@@ -104,6 +86,52 @@ func TestRoverMoveOn(t *testing.T) {
 
 		if got := r.y; got != s.ExpectedY {
 			t.Errorf("unexpected result for coord Y, got: %v, expected: %v", got, s.ExpectedY)
+			return
+		}
+	}
+}
+
+func TestInvalidInstructionToWalk(t *testing.T) {
+	r := &Rover{}
+
+	suite := []struct {
+		Param string
+	}{
+		{"LMLMLMLM5"},
+		{"LMLYLMLMM"},
+	}
+
+	for _, s := range suite {
+		if got := r.Walk(s.Param); !errors.Is(got, ErrInvalidInstruction) {
+			t.Errorf("unexpected got value different of RoverError struct: got: %v", got)
+			return
+		}
+	}
+}
+
+func TestWalk(t *testing.T) {
+	suite := []struct {
+		InitialDirection int
+		InitialX         int
+		InitialY         int
+		Param            string
+		Expected         string
+	}{
+		{North, 1, 2, "LMLMLMLMM", "1 3 N"},
+		{East, 3, 3, "MMRMMRMRRM", "5 1 E"},
+		{North, 0, 0, "RMMLMMM", "2 3 N"},
+	}
+
+	for _, s := range suite {
+		r := &Rover{s.InitialDirection, s.InitialX, s.InitialY}
+
+		if err := r.Walk(s.Param); err != nil {
+			t.Error(err)
+			return
+		}
+
+		if got := r.String(); got != s.Expected {
+			t.Errorf("unexpected result, got: %s, expected: %s", got, s.Expected)
 			return
 		}
 	}
