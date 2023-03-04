@@ -1,6 +1,9 @@
 package rover
 
-import "strings"
+import (
+	"fmt"
+	"strings"
+)
 
 type Rover struct {
 	dir int
@@ -54,7 +57,26 @@ func (r *Rover) Walk(inst string) error {
 			ErrInvalidInstruction.Letter = l
 			return ErrInvalidInstruction
 		}
+
+		if l == TurnLeft {
+			r.TurnLeft()
+			continue
+		}
+
+		if l == TurnRight {
+			r.TurnRight()
+			continue
+		}
+
+		if l == MoveOn {
+			r.MoveOn()
+			continue
+		}
 	}
 
 	return nil
+}
+
+func (r *Rover) String() string {
+	return fmt.Sprintf("%d %d %s", r.x, r.y, Directions[r.dir])
 }
