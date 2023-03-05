@@ -10,3 +10,6 @@ lint:
 
 test:
 	@go test -v -cover $(PKGS)
+
+integration:
+	@go test -v -cover -tags=integration $(PKGS)
