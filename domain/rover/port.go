@@ -9,6 +9,5 @@ type RoverSDKRepository interface {
 }
 
 type UserCase interface {
-	Walk(inst string) error
-	String() string
+	Walk(x, y int, dir, inst string) (string, error)
 }
