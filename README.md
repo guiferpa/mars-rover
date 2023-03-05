@@ -3,7 +3,10 @@
 - [Get started](#get-started)
   - [Build source code](#build-source-code)
   - [Executing binary](#executing-binary)
-  - [Side jobs](#side-jobs)
+- [Tasks](#tasks)
+  - [Running lint](#running-lint)
+  - [Running unit tests](#running-only-unit-tests)
+  - [Running integration tests](#running-all-tests-including-integration-tests)
 - [Source code design pattern](#source-code-design-pattern)
   - [Tree overview](#tree-overview)
   - [Concepts of source code arch](#concepts-of-source-code-arch)
@@ -27,7 +30,7 @@ LMLML
 EOF
 ```
 
-### Side jobs
+### Tasks
 
 > :balloon: This project has `Makefile` as job runner
 
