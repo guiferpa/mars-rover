@@ -2,7 +2,7 @@ package cli
 
 import (
 	"fmt"
-	"github/guiferpa/foxbit-challenge/domain/rover"
+	"github/guiferpa/mars-rover/domain/rover"
 	"strconv"
 	"strings"
 )

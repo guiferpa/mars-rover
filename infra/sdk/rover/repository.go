@@ -1,6 +1,6 @@
 package rover
 
-import roverpkg "github/guiferpa/foxbit-challenge/pkg/rover"
+import roverpkg "github/guiferpa/mars-rover/pkg/rover"
 
 type RoverSDK struct {
 	rover *roverpkg.Rover

@@ -2,9 +2,9 @@ package main
 
 import (
 	"bufio"
-	"github/guiferpa/foxbit-challenge/domain/rover"
-	"github/guiferpa/foxbit-challenge/handler/interface/cli"
-	roversdk "github/guiferpa/foxbit-challenge/infra/sdk/rover"
+	"github/guiferpa/mars-rover/domain/rover"
+	"github/guiferpa/mars-rover/handler/interface/cli"
+	roversdk "github/guiferpa/mars-rover/infra/sdk/rover"
 	"os"
 )
 
