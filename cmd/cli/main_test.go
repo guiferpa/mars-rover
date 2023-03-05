@@ -3,7 +3,6 @@ package main
 import (
 	"bytes"
 	"io"
-	"io/ioutil"
 	"os"
 	"os/exec"
 	"strings"
@@ -33,7 +32,10 @@ MMRMMRMRRM
 	go func() {
 		defer stdin.Close()
 
-		io.WriteString(stdin, value)
+		if _, err := io.WriteString(stdin, value); err != nil {
+			t.Error(err)
+			return
+		}
 	}()
 
 	output, err := sub.CombinedOutput()
@@ -61,14 +63,18 @@ MMRMMRMRRM
 5 1 E
 `
 
-	f, err := ioutil.TempFile("/tmp", "mars-rover-*.txt")
+	f, err := os.CreateTemp("/tmp", "mars-rover-*.txt")
 	if err != nil {
 		t.Error(err)
 		return
 	}
 	defer os.Remove(f.Name())
 
-	f.WriteString(value)
+	if _, err := f.WriteString(value); err != nil {
+		t.Error(err)
+		return
+	}
+
 	if err := f.Sync(); err != nil {
 		t.Error(err)
 		return
