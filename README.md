@@ -35,6 +35,6 @@ $ make test
 
 #### Running all tests (including integration tests)
 ```sh
-$ make integration:w
+$ make integration
 
 ```
