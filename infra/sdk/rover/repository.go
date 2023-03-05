@@ -18,6 +18,10 @@ func (rs *RoverSDK) TurnRight() {
 	rs.rover.TurnRight()
 }
 
+func (rs *RoverSDK) MoveOn() {
+	rs.rover.MoveOn()
+}
+
 func (rs *RoverSDK) GetPosition() string {
 	return rs.rover.GetPosition()
 }
