@@ -4,6 +4,8 @@
   - [Build source code](#build-source-code)
   - [Executing binary](#executing-binary)
   - [Side jobs](#side-jobs)
+- [Source code design pattern](#source-code-design-pattern)
+  - [Tree overview](#tree-overview)
 
 ### Get started
 
@@ -42,4 +44,38 @@ $ make test
 ```sh
 $ make integration
 
+```
+
+### Source code design pattern
+
+#### Tree overview
+
+```sh
+.
+├── Makefile
+├── README.md
+├── cmd
+│   └── cli
+│       ├── main.go
+│       └── main_test.go
+├── domain
+│   └── rover
+│       ├── port.go
+│       ├── usecase.go
+│       └── usecase_test.go
+├── go.mod
+├── handler
+│   └── interface
+│       └── cli
+│           └── interface.go
+├── infra
+│   └── sdk
+│       └── rover
+│           └── repository.go
+└── pkg
+    └── rover
+        ├── direction.go
+        ├── instruction.go
+        ├── rover.go
+        └── rover_test.go
 ```
