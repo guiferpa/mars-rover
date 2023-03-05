@@ -1,5 +1,10 @@
 <h2>mars rover</h2>
 
+- [Get started](#get-started)
+  - [Build source code](#build-source-code)
+  - [Executing binary](#executing-binary)
+  - [Side jobs](#side-jobs)
+
 ### Get started
 
 #### Build source code
@@ -21,7 +26,7 @@ EOF
 
 ### Side jobs
 
-> :balloon: This project has `Makefile` as a job runner
+> :balloon: This project has `Makefile` as job runner
 
 #### Running lint
 ```sh
