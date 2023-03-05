@@ -36,7 +36,7 @@ func (m *RoverSDKMock) GetPosition() string {
 }
 
 func TestRoverWalkWithInvalidInstruction(t *testing.T) {
-	svc := &Service{sdk: &RoverSDKMock{}}
+	svc := &UseCaseService{sdk: &RoverSDKMock{}}
 
 	suite := []struct {
 		InitialX         int
@@ -73,7 +73,7 @@ func TestRoverWalk(t *testing.T) {
 
 	for _, s := range suite {
 		mock := &RoverSDKMock{}
-		svc := &Service{sdk: mock}
+		svc := &UseCaseService{sdk: mock}
 
 		_, err := svc.Walk(s.InitialX, s.InitialY, s.InitialDirection, s.Instruction)
 		if err != nil {

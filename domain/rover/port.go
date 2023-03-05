@@ -7,3 +7,8 @@ type RoverSDKRepository interface {
 	MoveOn()
 	GetPosition() string
 }
+
+type UserCase interface {
+	Walk(inst string) error
+	String() string
+}
