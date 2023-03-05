@@ -20,7 +20,11 @@ $ CGO_ENABLED=0 go build -v -o ./dist/cli ./cmd/cli/main.go
 
 #### Executing binary
 
-> :balloon: This app there's only _stdin_ input way
+```sh
+$ ./dist/cli --file=/temp/input.txt
+```
+
+> :balloon: At case on app doesn't recieve a flag `--file` app'll assume _stdin_ input way as default
 
 ```sh
 $ ./dist/cli << EOF
